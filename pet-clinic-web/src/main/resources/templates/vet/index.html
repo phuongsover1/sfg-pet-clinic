@@ -5,6 +5,25 @@
     <title>List All Vets</title>
 </head>
 <body>
-<h1 th:text="'List All Vets'">List All Vets...</h1>
+<!--/*@thymesVar id="vet" type="guru.springframework.sfgpetclinic.model.Vet"*/-->
+<h1 th:text="'List All Vets'">Vets List</h1>
+
+<table>
+    <thead>
+    <tr>
+        <th>Id</th>
+        <th>First name</th>
+        <th>Last name</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="vet : ${vets}">
+        <td th:text="${vet.id}">1</td>
+        <td th:text="${vet.firstName}">John</td>
+        <td th:text="${vet.lastName}">Doe</td>
+    </tr>
+    </tbody>
+</table>
+
 </body>
 </html>
