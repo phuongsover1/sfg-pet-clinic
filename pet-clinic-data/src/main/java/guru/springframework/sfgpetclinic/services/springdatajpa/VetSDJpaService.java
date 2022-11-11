@@ -45,18 +45,7 @@ public class VetSDJpaService implements VetService {
 
   @Override
   public Vet save(Vet object) {
-    if (object != null) {
-      if (object.getSpecialities().size() > 0) {
-        object.getSpecialities().forEach(speciality -> {
-          if (speciality.getId() == null) {
-            Speciality savedSpeciality = specialityRepository.save(speciality);
-            speciality.setId(savedSpeciality.getId());
-          }
-        });
-      }
-      return vetRepository.save(object);
-    }
-    return null;
+    return vetRepository.save(object);
   }
 
   @Override
