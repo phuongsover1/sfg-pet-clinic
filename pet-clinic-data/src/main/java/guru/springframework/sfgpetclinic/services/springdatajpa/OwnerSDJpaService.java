@@ -11,6 +11,8 @@ import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
 import guru.springframework.sfgpetclinic.model.Owner;
+import guru.springframework.sfgpetclinic.model.Pet;
+import guru.springframework.sfgpetclinic.model.PetType;
 import guru.springframework.sfgpetclinic.repositories.OwnerRepository;
 import guru.springframework.sfgpetclinic.repositories.PetRepository;
 import guru.springframework.sfgpetclinic.repositories.PetTypeRepository;
@@ -49,7 +51,23 @@ public class OwnerSDJpaService implements OwnerService {
 
   @Override
   public Owner save(Owner object) {
-    return ownerRepository.save(object);
+    if (object != null) {
+      if (object.getPets().size() > 0) {
+        object.getPets().forEach(pet -> {
+          PetType petType = pet.getPetType();
+          if (petType.getId() == null) {
+            PetType savedPetType = petTypeRepository.save(petType);
+            petType.setId(savedPetType.getId());
+          }
+          if (pet.getId() == null) {
+            Pet savedPet = petRepository.save(pet);
+            pet.setId(savedPet.getId());
+          }
+        });
+      }
+      return ownerRepository.save(object);
+    }
+    return null;
   }
 
   @Override
