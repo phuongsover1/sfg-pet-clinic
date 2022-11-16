@@ -16,7 +16,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 @Data
-@EqualsAndHashCode(callSuper = false, exclude = { "owner", "petType" })
+@EqualsAndHashCode(callSuper = true, exclude = { "owner", "petType" })
 @Entity
 @Table(name = "pets")
 public class Pet extends BaseEntity {

@@ -12,7 +12,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 @Data
-@EqualsAndHashCode(callSuper = false, exclude = { "pet" })
+@EqualsAndHashCode(callSuper = true, exclude = { "pet" })
 @Entity
 @Table(name = "visits")
 public class Visit extends BaseEntity {
