@@ -10,7 +10,6 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @ExtendWith(SpringExtension.class)
 public class SfgPetClinicApplicationTest {
-
   @Test
   public void contextLoad() {
     log.debug("Hello");
