@@ -33,7 +33,7 @@ public class OwnerControllerTest {
 
   @Mock
   Model model;
-  
+
   @InjectMocks
   OwnerController controller;
 
@@ -54,11 +54,10 @@ public class OwnerControllerTest {
   @Test
   void testFindOwners() throws Exception {
     mockMvc.perform(get("/owners/find"))
-            .andExpect(view().name("notimplemented"))
-            .andExpect(status().isOk());
-  
+        .andExpect(view().name("notimplemented"))
+        .andExpect(status().isOk());
 
-  verifyNoInteractions(ownerService);
+    verifyNoInteractions(ownerService);
   }
 
   @Test
